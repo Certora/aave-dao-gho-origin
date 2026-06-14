@@ -12,7 +12,7 @@ function mulDivSummary(uint256 x, uint256 y, uint256 denominator) returns uint25
 }
 
 function mulDivSummaryRounding(uint256 x, uint256 y, uint256 denominator, Math.Rounding rounding) returns uint256 {
-  if (rounding == Math.Rounding.Up) {
+  if (rounding == Math.Rounding.Ceil) {
     require denominator > 0;
     return require_uint256((x * y + denominator - 1) / denominator);
   } else {
