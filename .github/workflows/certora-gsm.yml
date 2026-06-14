@@ -27,9 +27,9 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: Certora/certora-run-action@v2
+      - uses: Certora/certora-run-action@v2.9.0
         with:
-          cli-version: 7.31.2
+          cli-release: alpha
           configurations: |-
             certora/gsm/conf/gsm/gho-gsm-1.conf
             certora/gsm/conf/gsm/gho-gsm-2.conf
