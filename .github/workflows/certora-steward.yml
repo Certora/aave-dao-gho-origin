@@ -37,10 +37,10 @@ jobs:
         with:
           cli-release: alpha
           configurations: |-
-            certora/steward/conf/GhoAaveSteward.conf
-            certora/steward/conf/GhoBucketSteward.conf
-            certora/steward/conf/GhoCcipSteward.conf
-            certora/steward/conf/GhoGsmSteward.conf
+            certora/steward/conf/GhoAaveSteward.conf --prover_version master
+            certora/steward/conf/GhoBucketSteward.conf --prover_version master
+            certora/steward/conf/GhoCcipSteward.conf --prover_version master
+            certora/steward/conf/GhoGsmSteward.conf --prover_version master
           solc-versions: 0.8.27
           comment-fail-only: false
           solc-remove-version-prefix: "0."
