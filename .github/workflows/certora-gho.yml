@@ -35,11 +35,11 @@ jobs:
 
       - uses: Certora/certora-run-action@v2.9.0
         with:
-          cli-release: alpha
+          cli-release: stable
           configurations: |-
-            certora/gho/conf/verifyUpgradeableGhoToken.conf --prover_version master
-            certora/gho/conf/verifyGhoToken.conf --prover_version master
-            certora/gho/conf/verifyFlashMinter.conf --rule balanceOfFlashMinterGrows integrityOfTreasurySet integrityOfFeeSet availableLiquidityDoesntChange integrityOfDistributeFeesToTreasury feeSimulationEqualsActualFee --prover_version master
+            certora/gho/conf/verifyUpgradeableGhoToken.conf
+            certora/gho/conf/verifyGhoToken.conf
+            certora/gho/conf/verifyFlashMinter.conf --rule balanceOfFlashMinterGrows integrityOfTreasurySet integrityOfFeeSet availableLiquidityDoesntChange integrityOfDistributeFeesToTreasury feeSimulationEqualsActualFee
           solc-versions: 0.8.27
           comment-fail-only: false
           solc-remove-version-prefix: "0."

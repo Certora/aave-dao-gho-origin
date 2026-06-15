@@ -35,12 +35,12 @@ jobs:
 
       - uses: Certora/certora-run-action@v2.9.0
         with:
-          cli-release: alpha
+          cli-release: stable
           configurations: |-
-            certora/steward/conf/GhoAaveSteward.conf --prover_version master
-            certora/steward/conf/GhoBucketSteward.conf --prover_version master
-            certora/steward/conf/GhoCcipSteward.conf --prover_version master
-            certora/steward/conf/GhoGsmSteward.conf --prover_version master
+            certora/steward/conf/GhoAaveSteward.conf
+            certora/steward/conf/GhoBucketSteward.conf
+            certora/steward/conf/GhoCcipSteward.conf
+            certora/steward/conf/GhoGsmSteward.conf
           solc-versions: 0.8.27
           comment-fail-only: false
           solc-remove-version-prefix: "0."
