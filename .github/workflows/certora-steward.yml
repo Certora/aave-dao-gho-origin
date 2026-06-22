@@ -33,9 +33,10 @@ jobs:
           touch applyHarness.patch
           make munged
 
-      - uses: Certora/certora-run-action@v2.9.0
+      - uses: Certora/certora-run-action@feat/auto-timeouter
         with:
           cli-release: stable
+          auto-rerun-timeouts: "true"
           configurations: |-
             certora/steward/conf/GhoAaveSteward.conf
             certora/steward/conf/GhoBucketSteward.conf

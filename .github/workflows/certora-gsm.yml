@@ -27,9 +27,10 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: Certora/certora-run-action@v2.9.0
+      - uses: Certora/certora-run-action@feat/auto-timeouter
         with:
           cli-release: stable
+          auto-rerun-timeouts: "true"
           configurations: |-
             certora/gsm/conf/gsm/gho-gsm-1.conf
             certora/gsm/conf/gsm/gho-gsm-2.conf
