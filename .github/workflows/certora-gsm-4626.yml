@@ -39,7 +39,8 @@ jobs:
             certora/gsm/conf/gsm4626/balances-buy-4626.conf
             certora/gsm/conf/gsm4626/balances-sell-4626.conf --rule R1_getAssetAmountForSellAsset_arg_vs_return R1a_buyGhoUpdatesGhoBalanceCorrectly1 R2_getAssetAmountForSellAsset_sellAsset_eq
             certora/gsm/conf/gsm4626/balances-sell-4626.conf --rule R3a_sellAssetUpdatesAssetBalanceCorrectly
-            certora/gsm/conf/gsm4626/balances-sell-4626.conf --rule R4_buyGhoUpdatesGhoBalanceCorrectly R4a_buyGhoAmountGtGhoBalanceChange
+            certora/gsm/conf/gsm4626/balances-sell-4626.conf --rule R4_buyGhoUpdatesGhoBalanceCorrectly
+            certora/gsm/conf/gsm4626/balances-sell-4626.conf --rule R4a_buyGhoAmountGtGhoBalanceChange
             certora/gsm/conf/gsm4626/fees-buy-4626.conf
             certora/gsm/conf/gsm4626/fees-sell-4626.conf --rule R3a_estimatedSellFeeCanBeLowerThanActualSellFee R2_getAssetAmountForSellAssetVsActualSellFee R4a_getSellFeeVsgetAssetAmountForSellAsset R4_getSellFeeVsgetAssetAmountForSellAsset R1a_getAssetAmountForSellAssetFeeNeGetSellFee R2a_getAssetAmountForSellAssetNeActualSellFee R4b_getSellFeeVsgetAssetAmountForSellAsset R1_getAssetAmountForSellAssetFeeGeGetSellFee R3b_estimatedSellFeeEqActualSellFee
             certora/gsm/conf/gsm4626/optimality4626.conf --rule R5a_externalOptimalityOfSellAsset R6a_externalOptimalityOfBuyAsset
