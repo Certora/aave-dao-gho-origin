@@ -4,7 +4,10 @@
 methods {
     function getAssetPriceInGho(uint256, bool) external returns (uint256) envfree;
     function getGhoPriceInAsset(uint256, bool) external returns (uint256) envfree;
-    function _.mulDiv(uint256 x, uint256 y, uint256 denominator) internal => mulDivSummary(x, y, denominator) expect (uint256); 
+    function _.mulDiv(uint256 x, uint256 y, uint256 denominator) internal => mulDivSummary(x, y, denominator) expect (uint256);
+    // 4-arg rounding overload: `Math.Rounding` is ambiguous (two `Math` libraries with different
+    // members), so we qualify by the originating contract importing OZ v5 Math (Floor/Ceil/Trunc/Expand).
+    function _.mulDiv(uint256 x, uint256 y, uint256 denominator, FixedPriceStrategyHarness.Rounding rounding) internal => mulDivSummaryWithRounding(x, y, denominator, rounding) expect (uint256);
 }
 
 
@@ -15,10 +18,15 @@ function mulDivSummary(uint256 x, uint256 y, uint256 denominator) returns uint25
 }
 
 
-// The 4-arg Math.mulDiv(...,Math.Rounding) summary was removed: the alpha CVL
-// typechecker cannot reference the library enum Math.Rounding as a type. The real
-// 4-arg mulDiv body runs instead (calls the summarized 3-arg mulDiv + a mulmod-based
-// rounding bump), which is behavior-equivalent to this ceil/floor summary.
+function mulDivSummaryWithRounding(uint256 x, uint256 y, uint256 denominator, FixedPriceStrategyHarness.Rounding rounding) returns uint256
+{
+    require denominator > 0;
+    if (rounding == FixedPriceStrategyHarness.Rounding.Ceil)
+    {
+        return require_uint256((x * y + denominator - 1) / denominator);
+    }
+	else return require_uint256((x * y) / denominator);
+}
 
 // Full report at https://prover.certora.com/output/17512/ed7722cf57e54d228e6f3487bd15661e?anonymousKey=4bf315b7502b8c338c4b4cd8bcfe7ae9eb858782
 
