@@ -30,6 +30,7 @@ jobs:
       - uses: Certora/certora-run-action@feat/auto-timeouter
         with:
           cli-release: stable
+          server: "vaas-dev"
           auto-rerun-timeouts: "true"
           configurations: |-
             certora/gsm/conf/gsm4626/gho-gsm4626-1.conf

@@ -36,6 +36,7 @@ jobs:
       - uses: Certora/certora-run-action@feat/auto-timeouter
         with:
           cli-release: stable
+          server: "vaas-dev"
           auto-rerun-timeouts: "true"
           configurations: |-
             certora/steward/conf/GhoAaveSteward.conf
