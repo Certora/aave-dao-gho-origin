@@ -7,7 +7,7 @@ methods {
     function _.mulDiv(uint256 x, uint256 y, uint256 denominator) internal => mulDivSummary(x, y, denominator) expect (uint256);
     // 4-arg rounding overload: `Math.Rounding` is ambiguous (two `Math` libraries with different
     // members), so we qualify by the originating contract importing OZ v5 Math (Floor/Ceil/Trunc/Expand).
-    function _.mulDiv(uint256 x, uint256 y, uint256 denominator, FixedPriceStrategyHarness.Rounding rounding) internal => mulDivSummaryWithRounding(x, y, denominator, rounding) expect (uint256);
+    function _.mulDiv(uint256 x, uint256 y, uint256 denominator, Math.Rounding rounding) internal => mulDivSummaryWithRounding(x, y, denominator, rounding) expect (uint256);
 }
 
 
@@ -18,10 +18,10 @@ function mulDivSummary(uint256 x, uint256 y, uint256 denominator) returns uint25
 }
 
 
-function mulDivSummaryWithRounding(uint256 x, uint256 y, uint256 denominator, FixedPriceStrategyHarness.Rounding rounding) returns uint256
+function mulDivSummaryWithRounding(uint256 x, uint256 y, uint256 denominator, Math.Rounding rounding) returns uint256
 {
     require denominator > 0;
-    if (rounding == FixedPriceStrategyHarness.Rounding.Ceil)
+    if (rounding == Math.Rounding.Ceil)
     {
         return require_uint256((x * y + denominator - 1) / denominator);
     }

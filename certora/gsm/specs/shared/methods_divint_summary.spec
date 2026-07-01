@@ -1,10 +1,13 @@
 // The (unverified) summary for OpenZeppelin's `Math.mulDiv`.
+// Conflict variant: two `Math` libraries with different `Rounding` members are in scene
+// (OZ v5 {Floor,Ceil,Trunc,Expand} vs vendored OZ v4 {Down,Up,Zero}), so `Math.Rounding`
+// is ambiguous and must be qualified by an originating contract that imports the OZ v5 Math.
+// FixedFeeStrategyHarness is present in every conflicting conf that imports this spec.
+// (See methods_divint_summary_single_math.spec for the unqualified single-`Math` variant.)
 // Use with care!
 
 methods {
   function Math.mulDiv(uint256 x, uint256 y, uint256 denominator) internal returns (uint256) => mulDivSummary(x, y, denominator);
-  // The 4-arg rounding overload: `Math.Rounding` is ambiguous (two `Math` libraries with different
-  // members), so we qualify by the originating contract that imports the OZ v5 Math (Floor/Ceil/Trunc/Expand).
   function _.mulDiv(uint256 x, uint256 y, uint256 denominator, FixedFeeStrategyHarness.Rounding rounding) internal => mulDivSummaryWithRounding(x, y, denominator, rounding) expect (uint256);
 }
 
