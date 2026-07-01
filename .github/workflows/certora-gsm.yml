@@ -33,24 +33,24 @@ jobs:
           server: "vaas-dev"
           auto-rerun-timeouts: "true"
           configurations: |-
-            certora/gsm/conf/gsm/gho-gsm-1.conf
-            certora/gsm/conf/gsm/gho-gsm-2.conf
-            certora/gsm/conf/gsm/gho-gsm-inverse.conf
-            certora/gsm/conf/gsm/balances-buy.conf
-            certora/gsm/conf/gsm/balances-sell.conf --exclude_rule R3_sellAssetUpdatesAssetBalanceCorrectly R4_buyGhoUpdatesGhoBalanceCorrectly
+            certora/gsm/conf/gsm/gho-gsm-1.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/gho-gsm-2.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/gho-gsm-inverse.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/balances-buy.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/balances-sell.conf --exclude_rule R3_sellAssetUpdatesAssetBalanceCorrectly R4_buyGhoUpdatesGhoBalanceCorrectly --disable_local_typechecking
             #certora/gsm/conf/gsm/balances-sell.conf --rule R3_sellAssetUpdatesAssetBalanceCorrectly   waiting for ticket CERT-9408
             #certora/gsm/conf/gsm/balances-sell.conf --rule R4_buyGhoUpdatesGhoBalanceCorrectly     waiting for ticket CERT-9408
-            certora/gsm/conf/gsm/fees-buy.conf
-            certora/gsm/conf/gsm/fees-sell.conf
-            certora/gsm/conf/gsm/gho-assetToGhoInvertibility.conf --rule basicProperty_getAssetAmountForBuyAsset sellAssetInverse_all buyAssetInverse_all basicProperty_getGhoAmountForSellAsset basicProperty_getAssetAmountForSellAsset basicProperty_getGhoAmountForBuyAsset
-            certora/gsm/conf/gsm/gho-assetToGhoInvertibility.conf --rule basicProperty2_getAssetAmountForBuyAsset
-            certora/gsm/conf/gsm/optimality.conf --rule R3_optimalityOfSellAsset_v1 R1_optimalityOfBuyAsset_v1 R6a_externalOptimalityOfBuyAsset R5a_externalOptimalityOfSellAsset
-            certora/gsm/conf/gsm/optimality.conf --rule R2_optimalityOfBuyAsset_v2 --prover_args "-destructiveOptimizations twostage"
-            certora/gsm/conf/gsm/getAmount_properties.conf --rule getAssetAmountForBuyAsset_funcProperty_LR getAssetAmountForBuyAsset_funcProperty_RL
-            certora/gsm/conf/gsm/finishedRules.conf --rule whoCanChangeExposure whoCanChangeAccruedFees sellingDoesntExceedExposureCap cantBuyOrSellWhenSeized giftingGhoDoesntAffectStorageSIMPLE giftingUnderlyingDoesntAffectStorageSIMPLE collectedBuyFeePlus1IsAtLeastAsRequired sellAssetSameAsGetGhoAmountForSellAsset collectedSellFeeIsAtLeastAsRequired collectedBuyFeeIsAtLeastAsRequired correctnessOfBuyAsset collectedBuyFeePlus2IsAtLeastAsRequired getAssetAmountForSellAsset_correctness cantBuyOrSellWhenFrozen whoCanChangeExposureCap cantSellIfExposureTooHigh sellAssetIncreasesExposure buyAssetDecreasesExposure rescuingGhoKeepsAccruedFees rescuingAssetKeepsAccruedFees
-            certora/gsm/conf/gsm/gho-fixedPriceStrategy.conf
-            certora/gsm/conf/gsm/FixedFeeStrategy.conf
-            certora/gsm/conf/gsm/OracleSwapFreezer.conf
+            certora/gsm/conf/gsm/fees-buy.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/fees-sell.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/gho-assetToGhoInvertibility.conf --rule basicProperty_getAssetAmountForBuyAsset sellAssetInverse_all buyAssetInverse_all basicProperty_getGhoAmountForSellAsset basicProperty_getAssetAmountForSellAsset basicProperty_getGhoAmountForBuyAsset --disable_local_typechecking
+            certora/gsm/conf/gsm/gho-assetToGhoInvertibility.conf --rule basicProperty2_getAssetAmountForBuyAsset --disable_local_typechecking
+            certora/gsm/conf/gsm/optimality.conf --rule R3_optimalityOfSellAsset_v1 R1_optimalityOfBuyAsset_v1 R6a_externalOptimalityOfBuyAsset R5a_externalOptimalityOfSellAsset --disable_local_typechecking
+            certora/gsm/conf/gsm/optimality.conf --rule R2_optimalityOfBuyAsset_v2 --prover_args "-destructiveOptimizations twostage" --disable_local_typechecking
+            certora/gsm/conf/gsm/getAmount_properties.conf --rule getAssetAmountForBuyAsset_funcProperty_LR getAssetAmountForBuyAsset_funcProperty_RL --disable_local_typechecking
+            certora/gsm/conf/gsm/finishedRules.conf --rule whoCanChangeExposure whoCanChangeAccruedFees sellingDoesntExceedExposureCap cantBuyOrSellWhenSeized giftingGhoDoesntAffectStorageSIMPLE giftingUnderlyingDoesntAffectStorageSIMPLE collectedBuyFeePlus1IsAtLeastAsRequired sellAssetSameAsGetGhoAmountForSellAsset collectedSellFeeIsAtLeastAsRequired collectedBuyFeeIsAtLeastAsRequired correctnessOfBuyAsset collectedBuyFeePlus2IsAtLeastAsRequired getAssetAmountForSellAsset_correctness cantBuyOrSellWhenFrozen whoCanChangeExposureCap cantSellIfExposureTooHigh sellAssetIncreasesExposure buyAssetDecreasesExposure rescuingGhoKeepsAccruedFees rescuingAssetKeepsAccruedFees --disable_local_typechecking
+            certora/gsm/conf/gsm/gho-fixedPriceStrategy.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/FixedFeeStrategy.conf --disable_local_typechecking
+            certora/gsm/conf/gsm/OracleSwapFreezer.conf --disable_local_typechecking
           solc-versions: 0.8.20
           comment-fail-only: false
           solc-remove-version-prefix: "0."
