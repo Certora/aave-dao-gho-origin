@@ -27,7 +27,7 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: Certora/certora-run-action@feat/auto-timeouter
+      - uses: Certora/certora-run-action@v2.10.0
         with:
           cli-release: alpha
           server: "vaas-dev"

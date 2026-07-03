@@ -33,7 +33,7 @@ jobs:
           touch applyHarness.patch
           make munged
 
-      - uses: Certora/certora-run-action@feat/auto-timeouter
+      - uses: Certora/certora-run-action@v2.10.0
         with:
           cli-release: stable
           server: "vaas-dev"
