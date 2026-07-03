@@ -20,11 +20,12 @@ function mulDivSummary(uint256 x, uint256 y, uint256 denominator) returns uint25
 function mulDivSummaryRounding(uint256 x, uint256 y, uint256 denominator, FixedPriceStrategy4626Harness.Rounding rounding) returns uint256
 {
     require denominator > 0;
-    if (rounding == FixedPriceStrategy4626Harness.Rounding.Ceil)
+    uint256 base = mulDivSummary(x, y, denominator);
+    if (rounding == FixedPriceStrategy4626Harness.Rounding.Ceil && (x * y) % denominator > 0)
     {
-        return require_uint256((x * y + denominator - 1) / denominator);
+        return require_uint256(base + 1);
     }
-	else return require_uint256((x * y) / denominator);
+	else return base;
 }
 
 
